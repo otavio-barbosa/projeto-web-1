@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/login.css">
+    <script src="/js/jquery-3.6.4.js"></script>
+    <script>
+        $(function () {
+            $("#header").load('/partials/header.html')
+        });
+    </script>
+    <title>Entrar</title>
+</head>
+
+<body>
+    <div id="header"></div>
+    <main>
+        <form>
+            <div>
+                <label>E-mail</label>
+                <input type="email">
+            </div>
+            <div>
+                <label>Senha</label>
+                <input type="password">
+            </div>
+            <a href="" id="btn-login">Entrar</a>
+            <a href="">Esqueci minha senha</a>
+        </form>
+    </main>
+</body>
+
+</html>
