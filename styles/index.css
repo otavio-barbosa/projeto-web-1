@@ -39,7 +39,11 @@ button {
 }
 
 main {
-    background-color: salmon;
+    background-image: url(/img/vacine-background.jfif);
+    background-position: center;
+    background-size: cover;
+    background-color: #829896;
+
     height: 100vh;
     display: flex;
     flex-direction: column;
