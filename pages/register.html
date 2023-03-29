@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/register.css">
+
+    <script src="/js/jquery-3.6.4.js"></script>
+    <script>
+        $(function () {
+            $("#header").load('/partials/header.html')
+        });
+    </script>
+
+    <title>Cadastro</title>
+</head>
+
+<body>
+    <div id="header"></div>
+    <form>
+        <div>
+            <div class="align">
+                <label for="" class="form-label">Nome completo</label>
+                <input type="text" class="input-default">
+            </div>
+            <div class="align">
+                <div>
+                    <label for="" class="form-label">Sexo</label>
+                    <label for="masculino">
+                        <input type="radio" class="input-radio" name="sexo" value="masculino">Masculino
+                    </label>
+                    <label for="feminino">
+                        <input type="radio" class="input-radio" name="sexo" value="feminino">Feminino
+                    </label>
+                </div>
+            </div>
+            <div class="align">
+                <label class="form-label">Data nascimento</label>
+                <input type="date" class="input-date">
+            </div>
+            <div class="align">
+                <label class="form-label">E-mail</label>
+                <input type="email" class="input-default">
+            </div>
+            <div class="align">
+                <label class="form-label">Senha</label>
+                <input type="password" class="input-default">
+            </div>
+            <div class="align">
+                <label class="form-label">Repetir senha</label>
+                <input type="password" class="input-default">
+            </div>
+            <a href="/" class="btn-register">Cadastrar</a>
+        </div>
+    </form>
+</body>
+
+</html>

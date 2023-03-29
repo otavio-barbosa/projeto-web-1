@@ -6,6 +6,10 @@ body {
     font-family: 'Averia Libre', cursive;
 }
 
+a {
+    margin: 0;
+}
+
 header img {
     margin-left: 18px;
 }
