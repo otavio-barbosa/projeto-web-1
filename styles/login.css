@@ -26,6 +26,7 @@ input {
     border: none;
     color: #3F92C5;
     font-size: 36px;
+    outline: none;
 }
 
 a {

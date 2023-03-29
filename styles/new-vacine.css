@@ -1,0 +1,14 @@
+form {
+    background-color: red;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-label {
+    width: 374px;
+    text-align: right;
+    display: inline-block;
+}
