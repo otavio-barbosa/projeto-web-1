@@ -6,6 +6,30 @@ form {
     margin-left: 44px;
 }
 
+form .delete-btn {
+    position: absolute;
+    right: 22px;
+    width: 100px;
+    padding: 10px 28px 10px 20px;
+
+    background-color: #FD7979;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 29px;
+    text-align: center;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+
+    display: flex;
+    justify-content: space-between;
+    /* background-image: url(/img/icons/trash-icon.svg); */
+}
+
+form .delete-btn img {
+    margin-right: 8px;
+}
+
 .form-label {
     width: 374px;
     text-align: right;

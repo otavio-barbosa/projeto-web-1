@@ -53,7 +53,6 @@ main {
     padding: 14px;
     border-radius: 10px;
     max-width: 330px;
-    /* height: 321px; */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -119,4 +118,10 @@ p {
     padding: 10px 20px;
 
     margin-bottom: 20px;
+}
+
+.btn-vacine:hover {
+    background-color: #fff;
+    color: #49B976;
+    border: none;
 }
