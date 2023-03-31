@@ -21,16 +21,21 @@
         <form>
             <div>
                 <label>E-mail</label>
-                <input type="email">
+                <input name="email" type="email" id="email" onchange="onChangeEmail()">
             </div>
             <div>
                 <label>Senha</label>
-                <input type="password">
+                <input name="password" type="password" id="password" onchange="onChangePassword()">
             </div>
+
+            <div class="error" id="email-error">Preencha o e-mail.</div>
+            <div class="error" id="password-error">Preencha a senha.</div>
+            <div class="error">E-mail e/ou senha inválidos.</div>
             <a href="" id="btn-login">Entrar</a>
+
             <a href="/pages/recover.html">Esqueci minha senha</a>
         </form>
     </main>
 </body>
-
+<script src="/js/login.js"></script>
 </html>
