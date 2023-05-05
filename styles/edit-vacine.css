@@ -1,3 +1,47 @@
+#bg-pop {
+    /* background-color: #236086;
+    opacity: 0.2; */
+}
+
+#pop-up {
+    background-color: #ffff;
+    text-align: center;
+    padding: 20px;
+    width: 40vw;
+    height: 30vh;
+
+    display: none;
+    position: absolute;
+    top: 45vh;
+    left: 50vh;
+    /* visibility: visible; */
+}
+
+#pop-up p {
+    margin: 0;
+    color: #FF8383;
+    font-size: 30px;
+    line-height: 36px;
+    margin-top: 35px;
+    margin-bottom: 55px;
+}
+
+#pop-up a {
+    text-decoration: none;
+    color: #ffff;
+    font-size: 36px;
+    padding: 10px 20px;
+}
+
+#pop-up .btn-yes {
+    background-color: #FF8383;
+    margin-right: 50px;
+}
+
+#pop-up .btn-cancel {
+    background-color: #3F92C5;
+}
+
 form {
     height: 100vh;
     display: flex;
@@ -6,7 +50,7 @@ form {
     margin-left: 44px;
 }
 
-form .delete-btn {
+form #delete-btn {
     position: absolute;
     right: 22px;
     width: 100px;
@@ -26,7 +70,7 @@ form .delete-btn {
     /* background-image: url(/img/icons/trash-icon.svg); */
 }
 
-form .delete-btn img {
+form #delete-btn img {
     margin-right: 8px;
 }
 
