@@ -49,6 +49,7 @@ input[type="radio"] {
 
 input[type="radio"]:checked {
     background-color: #419ED7;
+    border: 4px solid #ffffff;
     color: wheat;
 }
 
@@ -91,4 +92,13 @@ input[type="date"] {
     background-color: #fff;
     color: #49B976;
     border: none;
+}
+
+.error {
+    color: #FD7979;
+    font-size: 24px;
+    text-align: center;
+    margin-top: 1em;
+
+    display: none;
 }
