@@ -3,7 +3,6 @@
 body {
     margin: 0;
     font-family: 'Averia Libre', cursive;
-    background-color: red;
 }
 
 header {
@@ -22,27 +21,29 @@ nav {
     margin-right: 18px;
 }
 
-button {
-    font-family: 'Averia Libre';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 29px;
-
-    width: 198px;
-    height: 52px;
+a {
+    text-decoration: none;
+    font-size: 24px;
+    color: #FFFFFF;
     background-color: #419ED7;
-    color: #fff;
-    border: none;
-
+    border: 1px solid #419ED7;
+    padding: 12px 24px;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
 
+a:hover {
+    background-color: #fff;
+    color:#419ED7;
+    border: none;
+}
+
 main {
-    background-image: url(/img/vacine-background.jfif);
+    /* background-color: rgba(130, 152, 150, 1);
+    background-image: url(/img/vacine-background.jfif); */
+    background: rgba(130, 152, 150, 0.7)url(/img/vacine-background.jfif);
+    background-blend-mode: exclusion;
     background-position: center;
     background-size: cover;
-    background-color: #829896;
 
     height: 100vh;
     display: flex;
@@ -61,7 +62,5 @@ h1 {
 }
 
 .button {
-    width: 304px;
-    height: 59px;
     font-size: 32px;
 }

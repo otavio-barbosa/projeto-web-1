@@ -1,0 +1,36 @@
+{
+    "vacines": [
+        {
+            "name": "BCG",
+            "dose": "Dose única",
+            "date": "2022-06-11",
+            "image": "/img/covid.jfif",
+            "nextDose": "Não há próxima dose",
+            "dateNext": "2022-10-11"
+        },
+        {
+            "name": "Hepatite B",
+            "dose": "1a. dose",
+            "date": "2022-08-11",
+            "image": "/img/covid.jfif",
+            "nextDose": "Próxima dose em: 11/10/2022",
+            "dateNext": "2022-10-11"
+        },
+        {
+            "name": "Rotavírus",
+            "dose": "1a. dose",
+            "date": "2022-10-11",
+            "image": "/img/covid.jfif",
+            "nextDose": "Próxima dose em: 11/10/2023",
+            "dateNext": "2022-10-11"
+        },
+        {
+            "name": "Febre amarela",
+            "dose": "1a. dose",
+            "date": "2022-08-11",
+            "image": "/img/covid.jfif",
+            "nextDose": "Próxima dose em: 11/10/2023",
+            "dateNext": "2022-10-11"
+        }
+    ]
+}

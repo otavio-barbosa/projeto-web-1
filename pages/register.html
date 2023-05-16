@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/register.css">
+
+    <script src="/js/jquery-3.6.4.js"></script>
+    <script>
+        $(function () {
+            $("#header").load('/partials/headerRegister.html')
+        });
+    </script>
+
+    <title>Cadastro</title>
+</head>
+
+<body>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
+
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyD1BGzRP76ND0OUXNuHGK3otCP5DB8aFUE",
+            authDomain: "web-1-my-health.firebaseapp.com",
+            projectId: "web-1-my-health",
+            storageBucket: "web-1-my-health.appspot.com",
+            messagingSenderId: "172146807420",
+            appId: "1:172146807420:web:8669f16320a2797d3d6ff9"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        console.log('Funcionou')
+
+        firebase.auth().signInWithEmailAndPassword("email", "password")
+            .then((userCredential) => {
+                // Signed in
+                console.log('Funcionou ghg')
+
+                var user = userCredential.user;
+                // ...
+            })
+            .catch((error) => {
+                var errorCode = error.code;
+                var errorMessage = error.message;
+                console.log('Errooo', error)
+            });
+
+        console.log('Funcionou 222')
+    </script>
+    <div id="header"></div>
+    <form>
+        <div>
+            <div class="align">
+                <label for="" class="form-label">Nome completo</label>
+                <input type="text" class="input-default">
+            </div>
+            <div class="align">
+                <div class="align-radio">
+                    <label for="" class="form-label">Sexo</label>
+                    <label for="masculino" class="label-radio">
+                        <input type="radio" class="input-radio" name="sexo" value="masculino">Masculino
+                    </label>
+                    <label for="feminino" class="label-radio">
+                        <input type="radio" class="input-radio" name="sexo" value="feminino">Feminino
+                    </label>
+                </div>
+            </div>
+            <div class="align">
+                <label class="form-label">Data nascimento</label>
+                <input type="date" class="input-date">
+            </div>
+            <div class="align">
+                <label class="form-label">E-mail</label>
+                <input type="email" class="input-default">
+            </div>
+            <div class="align">
+                <label class="form-label">Senha</label>
+                <input id="password" type="password" class="input-default">
+            </div>
+            <div class="align">
+                <label class="form-label">Repetir senha</label>
+                <input id="rep-password" type="password" class="input-default">
+            </div>
+        </div>
+        <div class="error">Senha não confere!</div>
+        <a href="#" class="btn-register" id="btnRegister" onclick="register()">Cadastrar</a>
+    </form>
+
+    <script>
+        function register() {
+            const senha = document.getElementById('password').value
+            const repSenha = document.getElementById('rep-password').value
+            const error = document.querySelector('.error')
+            const btnRegister = document.getElementById('btnRegister')
+        
+            
+            senha != repSenha ? error.style.display = 'block' : error.style.display = 'none'
+            senha != repSenha ? btnRegister.href = "#" : btnRegister.href = "/pages/login.html"
+        }
+    </script>
+</body>
+
+</html>

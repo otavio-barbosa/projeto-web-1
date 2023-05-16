@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/edit-vacine.css" />
+
+    <script src="/js/jquery-3.6.4.js"></script>
+    <script>
+      $(function () {
+        $("#header").load("/partials/header.html");
+      });
+    </script>
+
+    <script src="/js/edit-vacine.js"></script>
+
+    <title>Editar Vacina</title>
+  </head>
+  <body>
+    <div id="pop-up">
+      <p>Tem certeza que deseja remover essa vacina?</p>
+      <div>
+        <a href="/pages/home.html" class="btn-yes">Sim</a>
+        <a href="" class="btn-cancel">Cancelar</a>
+      </div>
+    </div>
+    <div id="bg-pop">
+      <div id="header"></div>
+      <form>
+        <a href="#"  id="delete-btn" onclick="onClickModal()">
+          <img src="/img/icons/trash-icon.svg" alt="" /> Excluir
+        </a>
+        <div>
+          <div class="align">
+            <label class="form-label">Data de vascinação</label>
+            <input id="date" type="date" class="input-default" />
+          </div>
+          <div class="align">
+            <label class="form-label">Vacina</label>
+            <input id="vacine" type="text" class="input-default" />
+          </div>
+          <div class="align">
+            <div class="align-radio">
+              <label for="" class="form-label">Dose</label>
+              <label for="1dose" class="label-radio">
+                <input
+                  id="1-dose"
+                  type="radio"
+                  class="input-radio"
+                  name="dose"
+                  value="1dose"
+                />1a. dose
+              </label>
+              <label for="2dose" class="label-radio">
+                <input
+                  id="2-dose"
+                  type="radio"
+                  class="input-radio"
+                  name="dose"
+                  value="2dose"
+                />2a. dose
+              </label>
+              <label for="3dose" class="label-radio">
+                <input
+                  id="3-dose"
+                  type="radio"
+                  class="input-radio"
+                  name="dose"
+                  value="3dose"
+                />3a. dose
+              </label>
+              <label for="reforco" class="label-radio">
+                <input
+                  id="reinforcement"
+                  type="radio"
+                  class="input-radio"
+                  name="dose"
+                  value="reforco"
+                />Reforço
+              </label>
+              <label for="dose-unica" class="label-radio">
+                <input
+                  id="single-dose"
+                  type="radio"
+                  class="input-radio"
+                  name="dose"
+                  value="dose-unica"
+                />Dose única
+              </label>
+            </div>
+          </div>
+          <div class="file align">
+            <label class="form-label">Comprovante da vacina</label>
+            <input type="file" id="file" accept="image/*" />
+            <div>
+              <label for="file" class="file-label"> Selecionar imagem... </label>
+              <img id="image-select" />
+            </div>
+          </div>
+          <div class="align">
+            <label class="form-label">Próxima vacinação</label>
+            <input type="date" class="input-default" id="dateNext"/>
+          </div>
+        </div>
+        <a href="/pages/home.html" class="btn-register">Salvar alterações</a>
+      </form>
+    </div>
+  </body>
+</html>
