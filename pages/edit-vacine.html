@@ -32,17 +32,18 @@
         <div>
           <div class="align">
             <label class="form-label">Data de vascinação</label>
-            <input type="date" class="input-default" />
+            <input id="date" type="date" class="input-default" />
           </div>
           <div class="align">
             <label class="form-label">Vacina</label>
-            <input type="text" class="input-default" />
+            <input id="vacine" type="text" class="input-default" />
           </div>
           <div class="align">
             <div class="align-radio">
               <label for="" class="form-label">Dose</label>
               <label for="1dose" class="label-radio">
                 <input
+                  id="1-dose"
                   type="radio"
                   class="input-radio"
                   name="dose"
@@ -51,6 +52,7 @@
               </label>
               <label for="2dose" class="label-radio">
                 <input
+                  id="2-dose"
                   type="radio"
                   class="input-radio"
                   name="dose"
@@ -59,6 +61,7 @@
               </label>
               <label for="3dose" class="label-radio">
                 <input
+                  id="3-dose"
                   type="radio"
                   class="input-radio"
                   name="dose"
@@ -67,6 +70,7 @@
               </label>
               <label for="reforco" class="label-radio">
                 <input
+                  id="reinforcement"
                   type="radio"
                   class="input-radio"
                   name="dose"
@@ -75,6 +79,7 @@
               </label>
               <label for="dose-unica" class="label-radio">
                 <input
+                  id="single-dose"
                   type="radio"
                   class="input-radio"
                   name="dose"
@@ -86,11 +91,14 @@
           <div class="file align">
             <label class="form-label">Comprovante da vacina</label>
             <input type="file" id="file" accept="image/*" />
-            <label for="file" class="file-label"> Selecionar imagem... </label>
+            <div>
+              <label for="file" class="file-label"> Selecionar imagem... </label>
+              <img id="image-select" />
+            </div>
           </div>
           <div class="align">
             <label class="form-label">Próxima vacinação</label>
-            <input type="date" class="input-default" />
+            <input type="date" class="input-default" id="dateNext"/>
           </div>
         </div>
         <a href="" class="btn-register">Salvar alterações</a>

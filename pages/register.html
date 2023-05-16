@@ -10,7 +10,7 @@
     <script src="/js/jquery-3.6.4.js"></script>
     <script>
         $(function () {
-            $("#header").load('/partials/header.html')
+            $("#header").load('/partials/headerRegister.html')
         });
     </script>
 
@@ -83,15 +83,33 @@
             </div>
             <div class="align">
                 <label class="form-label">Senha</label>
-                <input type="password" class="input-default">
+                <input id="password" type="password" class="input-default">
             </div>
             <div class="align">
                 <label class="form-label">Repetir senha</label>
-                <input type="password" class="input-default">
+                <input id="rep-password" type="password" class="input-default">
             </div>
         </div>
-        <a href="/" class="btn-register">Cadastrar</a>
+        <div class="error">Senha não confere!</div>
+        <a class="btn-register" id="btnRegister" onclick="register()">Cadastrar</a>
     </form>
+
+    <script>
+        function register() {
+            const senha = document.getElementById('password').value
+            const repSenha = document.getElementById('rep-password').value
+            const error = document.querySelector('.error')
+            const btnRegister = document.getElementById('btnRegister')
+
+            if(senha.value == null) {
+                btnRegister.href = "#"
+                console.log('testeeee')
+            }
+
+            senha != repSenha ? error.style.display = 'block' : error.style.display = 'none'
+            senha != repSenha ? btnRegister.href = "#" : btnRegister.href = "/pages/login.html"
+        }
+    </script>
 </body>
 
 </html>

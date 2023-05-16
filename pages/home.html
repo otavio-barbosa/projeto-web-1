@@ -21,54 +21,31 @@
     <div class="content">
         <input type="text" placeholder="PESQUISAR VACINA...">
         <div class="flex-content">
-            <main>
-                <div class="card">
-                    <h2>BCG</h2>
-                    <div class="dose-card">Dose única</div>
-                    <p class="date-card">11/06/2022</p>
-                    <img src="/img/covid.jfif" alt="" class="img-card">
-                    <p class="next-card">Não há próxima dose</p>
-                </div>
+            <main class="cards">
+                <script>
+                    let cards = document.querySelector(".cards")
 
-                <div class="card">
-                    <h2>BCG</h2>
-                    <div class="dose-card">Dose única</div>
-                    <p class="date-card">11/06/2022</p>
-                    <img src="/img/covid.jfif" alt="" class="img-card">
-                    <p class="next-card">Não há próxima dose</p>
-                </div>
-
-                <div class="card">
-                    <h2>BCG</h2>
-                    <div class="dose-card">Dose única</div>
-                    <p class="date-card">11/06/2022</p>
-                    <img src="/img/covid.jfif" alt="" class="img-card">
-                    <p class="next-card">Não há próxima dose</p>
-                </div>
-
-                <div class="card">
-                    <h2>BCG</h2>
-                    <div class="dose-card">Dose única</div>
-                    <p class="date-card"></p>
-                    <img src="/img/covid.jfif" alt="" class="img-card">
-                    <p class="next-card">Não há próxima dose</p>
-                </div>
-
-                <div class="card">
-                    <h2>BCG</h2>
-                    <div class="dose-card">Dose única</div>
-                    <p class="date-card"></p>
-                    <img src="/img/covid.jfif" alt="" class="img-card">
-                    <p class="next-card">Não há próxima dose</p>
-                </div>
-
-                <div class="card">
-                    <h2>BCG</h2>
-                    <div class="dose-card">Dose única</div>
-                    <p class="date-card"></p>
-                    <img src="/img/covid.jfif" alt="" class="img-card">
-                    <p class="next-card">Não há próxima dose</p>
-                </div>
+                    fetch("../js/vacine.json")
+                        .then((response) => response.json())
+                        .then(({ vacines }) => {
+                            vacines
+                                .map((vacine, id) => {
+                                    let carta = document.createElement("div")
+                                    carta.setAttribute('class', 'card')
+                                    carta.style.cursor = 'pointer'
+                                    carta.addEventListener('click', function () {
+                                        const idWithInc = id + 1
+                                        window.location.href = `/pages/edit-vacine.html?id=${idWithInc}`
+                                    })
+                                    carta.innerHTML += `<h2 class="card-name"> ${vacine.name} </h2>`
+                                    carta.innerHTML += `<div class="dose-card"> ${vacine.dose} </div>`
+                                    carta.innerHTML += `<p class="date-card"> ${vacine.date} </p>`
+                                    carta.innerHTML += `<img src="${vacine.image}" class="img-card"/>`
+                                    carta.innerHTML += `<p class="next-card"> ${vacine.nextDose} </p>`
+                                    cards.appendChild(carta)
+                                })
+                        })
+                </script>
             </main>
             <a href="/pages/new-vacine.html" class="btn-vacine">Nova vacina</a>
         </div>
