@@ -3,7 +3,11 @@
     text-align: center;
     padding: 20px;
     width: 40vw;
-    height: 30vh;
+    height: 35vh;
+
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
     display: none;
     position: absolute;
@@ -16,8 +20,7 @@
     color: #FF8383;
     font-size: 30px;
     line-height: 36px;
-    margin-top: 35px;
-    margin-bottom: 55px;
+    margin-bottom: 36px;
 }
 
 #pop-up a {

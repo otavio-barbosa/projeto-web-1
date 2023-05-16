@@ -4,7 +4,7 @@ function onClickModal() {
 
     bgPop.style.background = "#236086"
     bgPop.style.opacity = "0.2"
-    popUp.style.display = "block";
+    popUp.style.display = "flex";
     popUp.style.zIndex = "8";
 }
 

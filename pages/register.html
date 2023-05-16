@@ -91,7 +91,7 @@
             </div>
         </div>
         <div class="error">Senha não confere!</div>
-        <a class="btn-register" id="btnRegister" onclick="register()">Cadastrar</a>
+        <a href="#" class="btn-register" id="btnRegister" onclick="register()">Cadastrar</a>
     </form>
 
     <script>
@@ -100,12 +100,8 @@
             const repSenha = document.getElementById('rep-password').value
             const error = document.querySelector('.error')
             const btnRegister = document.getElementById('btnRegister')
-
-            if(senha.value == null) {
-                btnRegister.href = "#"
-                console.log('testeeee')
-            }
-
+        
+            
             senha != repSenha ? error.style.display = 'block' : error.style.display = 'none'
             senha != repSenha ? btnRegister.href = "#" : btnRegister.href = "/pages/login.html"
         }
