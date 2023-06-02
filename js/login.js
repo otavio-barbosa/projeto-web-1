@@ -1,3 +1,29 @@
+import { auth } from "../firebase/config.js"
+import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-auth.js"
+
+const getEmail = () => {
+    return document.getElementById('email').value
+}
+
+const getPassword = () => {
+    return document.getElementById('password').value
+}
+
+const authUser = () => {
+    signInWithEmailAndPassword(auth, getEmail(), getPassword())
+        .then(() => {
+            console.log('logado com sucesso')
+            window.location.href = "../pages/home.html"
+        })
+        .catch((error) => {
+            console.log('Erro ao logar, tente novamente.' + error)
+        })
+}
+
+document.getElementById("btn-login").addEventListener('click', () => {
+    authUser()
+})
+
 function onChangeEmail() {
     const email = form.email().value;
     email ? form.emailError().style.display = "none" : form.emailError().style.display = "block"
@@ -19,3 +45,4 @@ const form = {
     passwordError: () => document.getElementById('password-error'),
     btnLogin: () => document.getElementById('btn-login'),
 }
+
