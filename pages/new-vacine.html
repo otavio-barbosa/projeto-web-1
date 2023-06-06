@@ -24,11 +24,11 @@
       <div>
         <div class="align">
           <label class="form-label">Data de vascinação</label>
-          <input type="date" class="input-default" />
+          <input type="date" class="input-default" id="dateTxt" />
         </div>
         <div class="align">
           <label class="form-label">Vacina</label>
-          <input type="text" class="input-default" />
+          <input type="text" class="input-default" id="vacineTxt" />
         </div>
         <div class="align">
           <div class="align-radio">
@@ -39,6 +39,7 @@
                 class="input-radio"
                 name="dose"
                 value="1dose"
+                id="doseTxt"
               />1a. dose
             </label>
             <label for="2dose" class="label-radio">
@@ -47,6 +48,7 @@
                 class="input-radio"
                 name="dose"
                 value="2dose"
+                id="doseTxt"
               />2a. dose
             </label>
             <label for="3dose" class="label-radio">
@@ -77,15 +79,17 @@
         </div>
         <div class="file align">
           <label class="form-label">Comprovante da vacina</label>
-          <input type="file" id="file" accept="image/*" />
+          <input type="file" id="file" accept="image/*"/>
           <label for="file" class="file-label"> Selecionar imagem... </label>
         </div>
         <div class="align">
           <label class="form-label">Próxima vacinação</label>
-          <input type="date" class="input-default" />
+          <input type="date" class="input-default" id="nextVacineTxt"/>
         </div>
       </div>
-      <a href="/pages/home.html" class="btn-register">Cadastrar</a>
+      <a href="#" class="btn-register" id="btnRegister">Cadastrar</a>
     </form>
+
+    <script type="module" src="/js/new-vacine.js"></script>
   </body>
 </html>
