@@ -9,6 +9,7 @@
 
     <script src="/js/jquery-3.6.4.js"></script>
     <script>
+        vacinesList = []
         $(function () {
             $("#header").load('/partials/header.html')
         });
@@ -47,9 +48,11 @@
                         })
                 </script>
             </main>
-            <a href="/pages/new-vacine.html" class="btn-vacine">Nova vacina</a>
+            <a href="#" class="btn-vacine" id="btnTest">Nova vacina</a>
         </div>
     </div>
+
+    <script type="module" src="/js/home.js"></script>
 </body>
 
 </html>
