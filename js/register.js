@@ -1,6 +1,6 @@
 import { auth, db } from "../firebase/config.js"
 import { createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-auth.js"
-import { addDoc, collection } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore.js"
+import { setDoc, doc } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore.js"
 
 const getName = () => {
     return document.getElementById('nameTxt').value
@@ -21,19 +21,16 @@ const getPassword = () => {
 const registerUser = () => {
     createUserWithEmailAndPassword(auth, getEmail(), getPassword())
         .then((result) => {
-            console.log('Usuário cadastradp com sucesso!!' + JSON.stringify(result))
-            console.log(getEmail() + " " + getPassword())
-
-            const doc = {
+            const docData = {
                 name: getName(),
                 date: getDate(),
-                email: getEmail(),
-                password: getPassword()
+                userUid: result.user.uid
             }
 
-            addDoc(collection(db, "users"), doc)
+            setDoc(doc(db, "users", result.user.uid), docData)
                 .then((result) => {
                     console.log('Documento cadastrado com sucesso: ' + JSON.stringify(result))
+                    window.location.href = "/pages/home.html"
                 })
                 .cath((error) => {
                     console.log('Erro ao cadastrar documento: ' + JSON.stringify(error))

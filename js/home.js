@@ -1,43 +1,52 @@
 import { db } from "../firebase/config.js"
-import { collection, query, where, getDocs, getDoc, doc, onSnapshot } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore.js"
+import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-auth.js"
+import { collection, query, onSnapshot } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore.js"
 
 const cards = document.querySelector(".cards")
 
 window.onload = async () => {
-    console.log('entrou no onload')
-    consultaTeste()
+    const auth = getAuth()
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            console.log("Entrou")
+            loadCards()
+        } else {
+            window.location.href = "/pages/login.html"
+            console.log("N existe")
+        }
+    })
 }
 
-const consultaTeste = () => {
-    console.log('entrou no consulta teste')
-
-    const userId = "VMZ8XmKXUsE4WQ2cAAYk"
+const loadCards = () => {
+    const auth = getAuth()
+    const userId = auth.currentUser.uid
 
     const que = query(collection(db, `users/${userId}/vacines`))
 
     onSnapshot(que, (snapshot) => {
         cards.innerHTML = ""
         snapshot.forEach((vacine) => {
+            const vacineData = vacine.data()
+
             cards.appendChild(vacineCard(
-                vacine.data().date,
-                vacine.data().vacine,
-                vacine.data().dose,
-                vacine.data().image,
-                vacine.data().nextVacine
+                vacineData.date,
+                vacineData.vacine,
+                vacineData.dose,
+                vacineData.image,
+                vacineData.nextVacine,
+                vacine.id
             ))
         })
     })
 }
 
-const vacineCard = (date, vacine, dose, urlImage, nextVacine) => {
-    console.log('entrou no vacine card')
+const vacineCard = (date, vacine, dose, urlImage, nextVacine, idVacine) => {
     let card = document.createElement("div")
+    card.addEventListener('click', function () {
+        window.location.href = `/pages/edit-vacine.html?id=${idVacine}`
+    })
     card.setAttribute('class', 'card')
     card.style.cursor = 'pointer'
-    card.addEventListener('click', function () {
-        const idWithInc = id + 1
-        window.location.href = `/pages/edit-vacine.html?id=${idWithInc}`
-    })
     card.innerHTML += `<h2 class="card-name"> ${vacine} </h2>`
     card.innerHTML += `<div class="dose-card"> ${dose} </div>`
     card.innerHTML += `<p class="date-card"> ${date} </p>`
@@ -48,54 +57,12 @@ const vacineCard = (date, vacine, dose, urlImage, nextVacine) => {
     return card
 }
 
-const loadVacines = () => {
-    const userId = "VMZ8XmKXUsE4WQ2cAAYk"
-    const queryVacines = query(collection(db, `users/${userId}/vacines`))
+//**TESTE DE BUSCA DO SERACH **/
 
-    getDocs(queryVacines)
-        .then((snapshot) => {
-            snapshot.forEach((doc) => {
-                vacinesList.push(doc.data())
-                console.log(doc.data())
-                console.log('Lista das vacinas: ' + vacinesList[0].dose)
-
-            })
-        })
-        .catch((error) => {
-            console.log('Erro ao carregar as vacinas: ' + JSON.stringify(error))
-        }) 
-
-    console.log(vacinesList)
+const getSearch = () => {
+    return document.getElementById('inputSearch').value
 }
-
-const searchVacines = () => {
-    const userId = "VMZ8XmKXUsE4WQ2cAAYk"
-    const idVacine = "Z1GTsQ7hTgtHyR8BpCTl"
-
-    const docRef = doc(db, `users/${userId}/vacines`, idVacine)
-    getDoc(docRef)
-        .then((doc) => {
-            console.log(doc.data().vacine)
-        })
-        .catch((error) => {
-            console.log('Erro ao tentar buscar documento ' + error)
-        })
-}
-
-// const searchVacines = () => {
-//     const userId = "VMZ8XmKXUsE4WQ2cAAYk"
-//     const idVacine = "Z1GTsQ7hTgtHyR8BpCTl"
-
-//     const docRef = collection(db, `users/${userId}/vacines`)
-//     query(docRef, where('vacine', '==', 'Gh'))
-//         .then((doc) => {
-//             console.log(doc.data().vacine)
-//         })
-//         .catch((error) => {
-//             console.log('Erro ao tentar buscar documento ' + error)
-//         })
-// }
 
 document.getElementById("btnTest").addEventListener('click', () => {
-    searchVacines()
+    window.location.href = "/pages/new-vacine.html"
 })
