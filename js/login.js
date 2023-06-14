@@ -1,5 +1,7 @@
 import { auth } from "../firebase/config.js"
-import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-auth.js"
+import { db } from "../firebase/config.js"
+import { signInWithEmailAndPassword, getAuth, onAuthStateChanged  } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-auth.js"
+import { getDoc, collection, doc } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore.js"
 
 const getEmail = () => {
     return document.getElementById('email').value
@@ -12,8 +14,22 @@ const getPassword = () => {
 const authUser = () => {
     signInWithEmailAndPassword(auth, getEmail(), getPassword())
         .then(() => {
+            const auth = getAuth()
+            const user = auth.currentUser;
+            console.log('logado ' + auth + 'userrr: ' + user.uid)
+
+            const docRef = doc(db, "users", user.uid)
+
+            getDoc(docRef)
+                .then((result) => {
+                    console.log('Aqui o result: ' + JSON.stringify(result.data()))
+                    window.location.href = "/pages/home.html"
+                })
+                .catch((error) => {
+                    console.log("Deu erro no doc" + error)
+                })
+
             console.log('logado com sucesso')
-            window.location.href = "../pages/home.html"
         })
         .catch((error) => {
             console.log('Erro ao logar, tente novamente.' + error)

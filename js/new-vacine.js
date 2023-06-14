@@ -1,8 +1,21 @@
 import { db, storage } from "../firebase/config.js"
+import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-auth.js"
 import { addDoc, collection } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore.js"
 import { uploadBytes, getDownloadURL, ref } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-storage.js"
 
 let file;
+
+window.onload = async () => {
+    const auth = getAuth()
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+          console.log('Entrou')
+        } else {
+          window.location.href = "/pages/login.html"
+          console.log("N existe")
+        }
+    })
+}
 
 const getDate = () => {
     return document.getElementById('dateTxt').value
@@ -21,7 +34,8 @@ const getNextVacine = () => {
 }
 
 const registerVacine = () => {
-    const userId = "VMZ8XmKXUsE4WQ2cAAYk"
+    const auth = getAuth()
+    const userId = auth.currentUser.uid
 
     const imgRef = ref(storage, "images/" + getVacine() + ".jpg")
 
@@ -41,6 +55,7 @@ const registerVacine = () => {
                     addDoc(collection(db, `users/${userId}/vacines`), doc)
                         .then((result) => {
                             console.log('Vacinas documentadas com sucesso:' + JSON.stringify(result))
+                            window.location.href = "/pages/home.html" 
                         })
                         .cath((error) => {
                             console.log('Erro ao documentar as vacinas: ' + JSON.stringify(error))

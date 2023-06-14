@@ -9,7 +9,6 @@
 
     <script src="/js/jquery-3.6.4.js"></script>
     <script>
-        vacinesList = []
         $(function () {
             $("#header").load('/partials/header.html')
         });
@@ -20,33 +19,9 @@
 <body>
     <div id="header"></div>
     <div class="content">
-        <input type="text" placeholder="PESQUISAR VACINA...">
+        <input type="text" placeholder="PESQUISAR VACINA..." id="inputSearch">
         <div class="flex-content">
             <main class="cards">
-                <!-- <script>
-                    let cards = document.querySelector(".cards")
-
-                    fetch("../js/vacine.json")
-                        .then((response) => response.json())
-                        .then(({ vacines }) => {
-                            vacines
-                                .map((vacine, id) => {
-                                    let carta = document.createElement("div")
-                                    carta.setAttribute('class', 'card')
-                                    carta.style.cursor = 'pointer'
-                                    carta.addEventListener('click', function () {
-                                        const idWithInc = id + 1
-                                        window.location.href = `/pages/edit-vacine.html?id=${idWithInc}`
-                                    })
-                                    carta.innerHTML += `<h2 class="card-name"> ${vacine.name} </h2>`
-                                    carta.innerHTML += `<div class="dose-card"> ${vacine.dose} </div>`
-                                    carta.innerHTML += `<p class="date-card"> ${vacine.date} </p>`
-                                    carta.innerHTML += `<img src="${vacine.image}" class="img-card"/>`
-                                    carta.innerHTML += `<p class="next-card"> ${vacine.nextDose} </p>`
-                                    cards.appendChild(carta)
-                                })
-                        })
-                </script> -->
             </main>
             <a href="#" class="btn-vacine" id="btnTest">Nova vacina</a>
         </div>
