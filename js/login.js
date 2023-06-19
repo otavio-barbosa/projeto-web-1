@@ -1,7 +1,7 @@
 import { auth } from "../firebase/config.js"
 import { db } from "../firebase/config.js"
 import { signInWithEmailAndPassword, getAuth, onAuthStateChanged  } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-auth.js"
-import { getDoc, collection, doc } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore.js"
+import { getDoc, doc } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore.js"
 
 const getEmail = () => {
     return document.getElementById('email').value
@@ -33,11 +33,18 @@ const authUser = () => {
         })
         .catch((error) => {
             console.log('Erro ao logar, tente novamente.' + error)
+
+            form.loginError().style.display = "block"
+
+
         })
 }
 
 document.getElementById("btn-login").addEventListener('click', () => {
     authUser()
+
+    onChangeEmail()
+    onChangePassword()
 })
 
 function onChangeEmail() {
@@ -50,15 +57,12 @@ function onChangePassword() {
     password ? form.passwordError().style.display = "none" : form.passwordError().style.display = "block"
 }
 
-function login() {
-    form.email().value == "" || form.password().value == "" ? form.btnLogin().href = "#" :form.btnLogin().href = "/pages/home.html" 
-}
-
 const form = {
     email: () => document.getElementById('email'),
     password: () => document.getElementById('password'),
     emailError: () => document.getElementById('email-error'),
     passwordError: () => document.getElementById('password-error'),
+    loginError: () => document.getElementById('login-error'),
     btnLogin: () => document.getElementById('btn-login'),
 }
 
