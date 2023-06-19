@@ -18,6 +18,7 @@ window.onload = async () => {
 }
 
 const loadCards = () => {
+    console.log('Ent. load cards')
     const auth = getAuth()
     const userId = auth.currentUser.uid
 
@@ -25,7 +26,7 @@ const loadCards = () => {
 
     onSnapshot(que, (snapshot) => {
         cards.innerHTML = ""
-        snapshot.forEach((vacine) => {
+        snapshot.forEach((vacine) => {   
             const vacineData = vacine.data()
 
             cards.appendChild(vacineCard(
@@ -57,11 +58,44 @@ const vacineCard = (date, vacine, dose, urlImage, nextVacine, idVacine) => {
     return card
 }
 
-//**TESTE DE BUSCA DO SERACH **/
+const filterData = (str) => {
+    const auth = getAuth()
+    const userId = auth.currentUser.uid
 
-const getSearch = () => {
-    return document.getElementById('inputSearch').value
+    const que = query(collection(db, `users/${userId}/vacines`))
+
+    onSnapshot(que, (snapshot) => {
+        cards.innerHTML = ""
+        snapshot.forEach((vacine) => {
+            const vacineData = vacine.data()
+            if (vacineData.vacine.toLowerCase().includes(str.toLowerCase())) {
+                cards.appendChild(vacineCard(
+                    vacineData.date,
+                    vacineData.vacine,
+                    vacineData.dose,
+                    vacineData.image,
+                    vacineData.nextVacine,
+                    vacine.id
+                ))
+            } else {
+                console.log("Deu ruim " + str)
+            }
+        })
+    })
+
 }
+
+const inputSearch = document.getElementById('inputSearch')
+
+inputSearch.addEventListener("input", function() {
+    const str = this.value
+
+    if (str) {
+        filterData(str)
+    } else {
+        loadCards()
+    }
+})
 
 document.getElementById("btnTest").addEventListener('click', () => {
     window.location.href = "/pages/new-vacine.html"
