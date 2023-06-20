@@ -13,7 +13,6 @@ window.onload = async () => {
         console.log("N existe")
       }
   })
-
 }
 
 let file;
@@ -58,7 +57,7 @@ const searchVacines = () => {
             document.getElementById('3-dose').setAttribute('checked', vacine.dose);
             break;
           case 'reforco':
-            document.getElementById('Reforço').setAttribute('checked', vacine.dose);
+            document.getElementById('reinforcement').setAttribute('checked', vacine.dose);
             break;
           case 'dose-unica':
             document.getElementById('single-dose').setAttribute('checked', vacine.dose);

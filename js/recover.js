@@ -11,7 +11,6 @@ const recoverPassword = () => {
     sendPasswordResetEmail(auth, getEmail())
         .then(() => {
             message.innerHTML = "E-mail de redefinição de senha enviado"
-            // alert('email enviado')
         })
 }
 

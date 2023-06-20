@@ -46,3 +46,8 @@ label {
     color: #49B976;
     border: none;
 }
+
+#txtMessage {
+    margin-top: 5px;
+    color: #FD7979;
+}

@@ -18,6 +18,14 @@ const getPassword = () => {
     return document.getElementById('password').value
 }
 
+const getRepPassword = () => {
+    return document.getElementById('rep-password').value
+}
+
+const getErrorPassword = () => {
+    return document.querySelector('.error')
+}
+
 const registerUser = () => {
     createUserWithEmailAndPassword(auth, getEmail(), getPassword())
         .then((result) => {
@@ -42,6 +50,6 @@ const registerUser = () => {
 }
 
 document.getElementById("btnRegister").addEventListener('click', () => {
-    registerUser()
+    getPassword() != getRepPassword() ?  getErrorPassword().style.display = 'block' : registerUser()
 })
 
