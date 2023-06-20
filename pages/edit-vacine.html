@@ -11,9 +11,17 @@
       $(function () {
         $("#header").load("/partials/header.html");
       });
-    </script>
 
-    <script src="/js/edit-vacine.js"></script>
+      function onClickModal() {
+        const popUp = document.querySelector('#pop-up');
+        const bgPop = document.querySelector('#bg-pop');
+
+        bgPop.style.background = "#236086"
+        bgPop.style.opacity = "0.2"
+        popUp.style.display = "flex";
+        popUp.style.zIndex = "8";
+      }
+    </script>
 
     <title>Editar Vacina</title>
   </head>
@@ -21,14 +29,14 @@
     <div id="pop-up">
       <p>Tem certeza que deseja remover essa vacina?</p>
       <div>
-        <a href="/pages/home.html" class="btn-yes">Sim</a>
+        <a class="btn-yes" id="btnDelete">Sim</a>
         <a href="" class="btn-cancel">Cancelar</a>
       </div>
     </div>
     <div id="bg-pop">
       <div id="header"></div>
       <form>
-        <a href="#"  id="delete-btn" onclick="onClickModal()">
+        <a id="delete-btn" onclick="onClickModal()">
           <img src="/img/icons/trash-icon.svg" alt="" /> Excluir
         </a>
         <div>
@@ -103,8 +111,10 @@
             <input type="date" class="input-default" id="dateNext"/>
           </div>
         </div>
-        <a href="/pages/home.html" class="btn-register">Salvar alterações</a>
+        <a class="btn-register" id="btnEdit">Salvar alterações</a>
       </form>
     </div>
+
+    <script type="module" src="/js/edit-vacine.js"></script>
   </body>
 </html>
